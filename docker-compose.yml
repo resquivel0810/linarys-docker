@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   wordpress:
-    container_name: wordpress-nuevo  # Nombre diferente
+    container_name: wordpress-nuevo
+    platform: linux/amd64
     depends_on:
       db:
         condition: service_healthy
@@ -11,7 +12,7 @@ services:
       - ./site/wp-content:/var/www/html/wp-content
       - ./init/prep.sh:/prep.sh
     ports:
-      - "8888:80"  # Cambiado de 8080 a 8888
+      - "8888:80"
     restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
@@ -20,19 +21,19 @@ services:
       WORDPRESS_DB_NAME: linarysdb
       WORDPRESS_TABLE_PREFIX: dGY66rR_
       WORDPRESS_DEBUG: "1"
-      PRODUCTION_URL: "http://linarys.ch"
+    # CAMBIO AQUÍ: entrypoint personalizado que da permisos
+    entrypoint: ["/bin/sh", "-c"]
     command: >
-      sh -c "
-        docker-entrypoint.sh apache2-foreground &
-        sleep 15
-        chmod +x /prep.sh
-        /prep.sh
-        wait
       "
+      chmod +x /prep.sh 2>/dev/null || true
+      /prep.sh &
+      exec docker-entrypoint.sh apache2-foreground
+      "
+
   db:
-    container_name: db-nuevo  # Nombre diferente
+    container_name: db-nuevo
     image: mysql:5.7
-    command: "--default-authentication-plugin=mysql_native_password"
+    platform: linux/amd64
     volumes:
       - ./database:/var/lib/mysql
       - ./mysqldumps/backup.sql.gz:/docker-entrypoint-initdb.d/backup.sql.gz
@@ -43,19 +44,22 @@ services:
       MYSQL_DATABASE: linarysdb
       MYSQL_USER: linarysdbuser
       MYSQL_PASSWORD: unamuysegura
-      WORDPRESS_TABLE_PREFIX: dGY66rR_
-      PRODUCTION_URL: "http://linarys.ch"
     ports:
-      - "3309:3306"  # Cambiado de 3307 a 3309
+      - "3309:3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-punamuysegura"]
       interval: 10s
       timeout: 5s
       retries: 20
+    # CAMBIO AQUÍ: entrypoint que da permisos a los scripts
+    entrypoint: ["/bin/sh", "-c", "chmod +x /docker-entrypoint-initdb.d/*.sh 2>/dev/null || true && exec docker-entrypoint.sh mysqld"]
+    command: "--default-authentication-plugin=mysql_native_password"
 
   adminer:
-    container_name: adminer-nuevo  # Nombre diferente
+    container_name: adminer-nuevo
     image: adminer
     restart: always
     ports:
-      - "8889:8080"  # Cambiado de 8082 a 8889
+      - "8889:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: db-nuevo
