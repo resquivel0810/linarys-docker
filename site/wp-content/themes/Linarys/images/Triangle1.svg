@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="607.473" height="616.593" viewBox="0 0 607.473 616.593">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f28772"/>
+      <stop offset="1" stop-color="#e7a405"/>
+    </linearGradient>
+  </defs>
+  <path id="Triangle_1" data-name="Triangle 1" d="M230.069,397.2c22.133,25.251,80.313,47.57,96.982-29.381S296.437,208.8,404.333,124.37,445.247-8.546,311.9,1.248c-89.405,18.189-110.62,39.175-212.148,5.6C55.8-2.949-9.888-4.675,1.252,93.59S207.936,371.948,230.069,397.2Z" transform="matrix(-0.574, -0.819, 0.819, -0.574, 262.708, 616.593)" fill="url(#linear-gradient)"/>
+</svg>

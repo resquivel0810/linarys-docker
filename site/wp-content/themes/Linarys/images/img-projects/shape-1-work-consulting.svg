@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="944.4" height="918.115" viewBox="0 0 944.4 918.115">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#3a60e9"/>
+      <stop offset="1" stop-color="#a010a0"/>
+    </linearGradient>
+  </defs>
+  <path id="Blue_bubble" data-name="Blue bubble" d="M281.207,524.6c42.778,39.8,59.477,113.624,98.85,159.038,44.313,51.116,113.022,56.709,166.308,23.366s91.45-100.334,110.244-173.63,19.868-152.594,13.38-229.444C663.19,223.461,658.1,161.292,601.442,83.7,559.978,32.142,500.982,12.777,444.107,4.987,318.379-12.241,162.827,13.469,55.564,108.795c-95.287,84.675-56.045,250.583,27.7,328.9C142.52,493.1,222.628,470.107,281.207,524.6Z" transform="translate(0 610.478) rotate(-65)" fill="url(#linear-gradient)"/>
+</svg>

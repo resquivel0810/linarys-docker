@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="660.916" height="660.916" viewBox="0 0 660.916 660.916">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.874" y1="0.282" x2="0.353" y2="0.582" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#3a60e9"/>
+      <stop offset="1" stop-color="#4c2fbb"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect x="-3" y="-4" width="482.521" height="452.154" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Trazado_1185" data-name="Trazado 1185" d="M39.145,66.681C11.628,87.955.036,117.593,0,148.471v.3c.058,44.361,23.925,91.232,58.661,119.492,41.741,33.963,98.173,19.868,139.441,53.268,30.138,24.391,41.9,69.641,69.636,97.475,31.218,31.329,79.621,34.757,117.158,14.319s64.423-61.491,77.664-106.419,14-93.526,9.426-140.627C467.2,136.959,455.286,85.471,423.7,51.3,394.487,19.7,352.925,7.831,312.859,3.056A442.543,442.543,0,0,0,260.631,0C183.989,0,100.393,19.325,39.145,66.681" transform="translate(0 0)" fill="url(#linear-gradient)"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_1543" data-name="Grupo 1543" transform="translate(655.966 319.015) rotate(135)">
+    <g id="Grupo_de_desplazamiento_2" data-name="Grupo de desplazamiento 2" transform="translate(0)" clip-path="url(#clip-path)" style="isolation: isolate">
+      <g id="Grupo_1096" data-name="Grupo 1096" transform="translate(0)" clip-path="url(#clip-path-2)">
+        <path id="Trazado_1184" data-name="Trazado 1184" d="M-29.885-84.471l-73.743,505.694L429.085,489.9,502.829-15.8Z" transform="translate(38.678 24.17)" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+  </g>
+</svg>

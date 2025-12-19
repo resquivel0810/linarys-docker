@@ -1,0 +1,899 @@
+
+  /**/
+
+  .val_circle{
+    width: 210px;
+    height: 210px;
+    border-radius: 100%;
+    display: table;
+    margin: auto;
+  }
+
+  .val_circle .val_icon{
+    position: absolute;
+    top: 40%;
+    right: 50%;
+    transform: translate(50%,-50%);
+    font-size: 110px;
+    color: white;
+  }
+
+  .val_circle:hover .val_icon{
+    filter: none;
+    opacity: 0.001;
+    -webkit-transition: opacity 100ms;
+    -moz-transition: opacity 100ms;
+    -o-transition: opacity 100ms;
+    -ms-transition: opacity 100ms;
+    transition: opacity 100ms
+  }
+
+  .val_text {
+    opacity: 0.001;
+    width: 95%;
+    padding-right: 5%;
+    padding-left: 5%;
+    color: transparent;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .val_circle:hover  .val_text {
+    opacity: 1;
+    color: white;
+  }
+  .val_row{
+    margin: 0% 0% 6%;
+  }
+  .val_content{
+    display: flex;
+    align-items: center;
+  }
+  .val_circle_mov{
+    width: 210px;
+    height: 210px;
+    border-radius: 100%;
+    display: table;
+
+  }
+  .val_circle_mov .val_icon{
+    position: absolute;
+    right: 50%;
+    transform: translate(-100%,10%);
+    font-size: 110px;
+    color: white;
+  }
+  .val_card{
+    width: 400px;
+    height: 88%;
+    opacity: 0.4;
+    margin: 3% 0%;
+    position: absolute;
+    right: 3%;
+    z-index: -2;
+    border-radius: 30px 30px 30px 30px / 30px 30px 30px 30px;
+  }
+  .val_text_container{
+    width: 50%;
+    padding: 6% 4%;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+  }
+  .val_text_container .val_legend_mov{
+    font-size: 25px;
+    color: #515151;
+    margin: 0% 0% 3%;
+  }
+  .val_text_container .val_text_mov{
+    font-size: 18px;
+    color: #707070;
+  }
+
+  .color1{
+    background-color: #ed883b;
+
+  }
+  .color1:hover{
+    background-color: #D47730;
+  }
+  .color2{
+    background-color: #a010a0;
+  }
+  .color2:hover{
+    background-color: #5E075E;
+  }
+  .color3{
+    background-color: #563bbf;
+  }
+  .color3:hover{
+    background-color: #4930AA;
+  }
+
+
+
+  @media  screen and (max-width: 991px){
+    .val_circle{
+      width: 180px;
+      height: 180px;
+    }
+
+    .val_text{
+      padding-right: 15%;
+      padding-left: 15%;
+    }
+    .val_circle .val_icon{
+      width: 80px;
+
+    }
+    .val_card{
+      width: 580px;
+    }
+
+    .val_text_container .val_text_mov{
+      font-size: 16px;
+    }
+
+    .val_row{
+      display: flex;
+      justify-content: center;
+    }
+
+    .val_text_container{
+      width: 65%;
+      padding: 6% 5%;
+    }
+
+    .val_circle_mov{
+      width: 150px;
+      height: 150px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .val_circle_mov .val_icon{
+      right: auto;
+      transform: initial;
+      font-size: 80px;
+    }
+
+  }
+  @media  screen and (max-width: 800px){
+    .val_circle .val_icon{
+      /* right: 28%; */
+    }
+
+  }
+  @media  screen and (min-width: 992px){
+    .val_mov{
+      display: none;
+    }
+
+  }
+
+
+
+  @media  screen and (max-width: 767px){
+
+    .val_circle{
+      width: 160px;
+      height: 160px;
+    }
+    .val_text{
+      top: 10%;
+      right: 8%;
+    }
+
+    .val_text_container{
+      width: 60%;
+      padding: 6% 4%;
+    }
+
+    .val_circle_mov .val_icon {
+      /* right: 50%;
+      transform: translate(-40%,10%); */
+    }
+    .val_card{
+      width: 400px;
+    }
+  }
+  @media  screen and (max-width: 575px){
+
+    .val_circle {
+      width: 200px;
+      height: 200px;
+    }
+
+
+    .val_circle_mov{
+      width: 180px;
+      height: 180px;
+    }
+    /* .val_card{
+      width: 380px;
+      height: 150px;
+      right: 9%;
+    } */
+    .val_row{
+      padding: 0% 6%;
+    }
+    .val_circle_mov .val_icon{
+      /* transform: translate(-55%,15%); */
+      font-size: 90px;
+    }
+    .val_text_container .val_text_mov {
+      font-size: 15px;
+    }
+    .val_text_container .val_legend_mov{
+      font-size: 22px;
+    }
+  }
+  @media  screen and (max-width: 510px){
+    .val_row{
+      padding: 0% 4%;
+    }
+  }
+
+  @media  screen and (max-width: 480px){
+    /* .val_row{
+      padding: 0% 4%;
+    } */
+    /* .val_circle_mov{
+      width: 180px;
+      height: 179px;
+    } */
+
+    .val_card{
+      width: 300px;
+    }
+    /* .val_circle_mov .val_icon {
+    transform: translate(-32%,15%);
+    } */
+    .val_text_container .val_legend_mov {
+      font-size: 18px;
+      margin: 0% 0% 2%;
+    }
+    .val_text_container .val_text_mov {
+      font-size: 13px;
+    }
+
+    .val_circle_mov .val_icon {
+      /* transform: translate(-118%,4%); */
+      font-size: 60px;
+    }
+
+    .val_text_container {
+      width: 70%;
+      padding: 6% 4%;
+    }
+
+    .val_circle_mov {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  @media  screen and (max-width: 420px){
+    /* .val_row{
+      padding: 0% 2%;
+    } */
+    /* .val_card{
+      width: 310px;
+    } */
+
+    .val_circle_mov .val_icon {
+      /* transform: translate(-88%,4%); */
+      font-size: 60px;
+    }
+
+    .val_text_container {
+      width: 70%;
+      padding: 6% 4%;
+    }
+
+    .val_circle_mov {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  @media  screen and (max-width: 400px){
+    .val_circle_mov .val_icon {
+      /* transform: translate(-78%,4%); */
+      font-size: 60px;
+    }
+  }
+  @media  screen and (max-width: 375px){
+    .val_row {
+      padding: 0%;
+    }
+    .val_circle_mov {
+      width: 95px;
+      height: 95px;
+    }
+    .val_text_container .val_legend_mov{
+      font-size: 17px;
+    }
+
+    .val_circle_mov .val_icon {
+      /* transform: translate(-95%,7%); */
+      font-size: 55px;
+    }
+
+    .val_card {
+      width: 275px;
+    }
+
+    .val_text_container {
+      padding: 6% 3%;
+    }
+
+  }
+  @media  screen and (max-width: 360px){
+    .val_circle_mov {
+      width: 90px;
+      height: 90px;
+    }
+
+    /* .val_circle_mov .val_icon {
+      transform: translate(-90%,7%);
+    } */
+
+  }
+
+  /* CARDS LATEST NEWS */
+  .card_semiCircle_about{
+    background-color: #FFFFFF;
+    width: 220px;
+    padding: 10px;
+    height: 330px;
+    /* border-radius: 100% 100% 20% 20%; */
+    border-top-left-radius: 100% 70%;
+    border-top-right-radius: 100% 70%;
+    border-bottom-right-radius: 40% 20%;
+    border-bottom-left-radius: 40% 20%;
+    box-shadow: 5px 5px 8px rgba(0,0,0,0.25);
+    display: table;
+    margin: 30px auto;
+  }
+
+.card_semiCircle_about .image{
+    width: 200px;
+    height: 200px;
+    box-shadow: 0px 6px 8px rgba(0,0,0,0.25);
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-bottom-left-radius: 50% 50%;
+    object-fit: cover;
+  }
+
+
+  .card_semiCircle_about .title_news{
+    text-align: center;
+    margin: 16px 15px 0px 15px;
+    color: #4C2FBB;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+.card_semiCircle_about .text{
+    text-align: center;
+    margin: 0px 15px 0px 15px;
+    color: #515151;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    overflow: auto;
+  }
+
+  .card_transform{
+    transform: skewY(-3deg);
+  }
+
+  @media  screen and (max-width: 991px){
+    .card_semiCircle_about{
+      width: 200px;
+      height: 310px;
+    }
+    .card_semiCircle_about .image{
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  .team_row{
+    display: none;
+  }
+
+  @media  screen and (max-width: 767px){
+    .team_row{
+      display: flex;
+    }
+  }
+  @media  screen and (max-width: 420px){
+    .card_semiCircle_about {
+      width: 180px;
+      height: 280px;
+    }
+    .card_semiCircle_about .image{
+      width: 160px;
+      height: 160px;
+    }
+  }
+  @media  screen and (max-width: 375px){
+    .card_semiCircle_about {
+      width: 165px;
+      height: 280px;
+    }
+    .card_semiCircle_about .image {
+      width: 145px;
+      height: 145px;
+    }
+  }
+
+  /*SHAPES*/
+
+  .shape-about-1-1
+  {
+      position: absolute;
+      width: 150%;
+      top: -103%;
+      left: -27%;
+      mix-blend-mode: darken;
+      z-index: -1;
+  }
+  .shape-about-1-2
+  {
+      position: absolute;
+      width: 22%;
+      top: 73%;
+      left: 2%;
+      mix-blend-mode: darken;
+      z-index: -1;
+  }
+  .shape-about-1-3
+  {
+      position: absolute;
+      width: 15%;
+      top: 55%;
+      right: 0%;
+      mix-blend-mode: darken;
+      z-index: -1;
+  }
+  .shape-about-1-4
+  {
+      position: absolute;
+      width: 12%;
+      top: 164%;
+      right: 8%;
+      mix-blend-mode: darken;
+      z-index: -1;
+  }
+  .bubble_franco
+  {
+      position: absolute;
+      width: 40%;
+      top: 7%;
+      left: -9%;
+      mix-blend-mode: darken;
+      z-index: -1;
+  }
+  .bubble_loic
+  {
+      position: absolute;
+      width: 40%;
+      top: 7%;
+      left: 14%;
+      mix-blend-mode: darken;
+      z-index: -1;
+  }
+  .bubble_marythe
+  {
+      position: absolute;
+      width: 40%;
+      top: 57%;
+      left: -4%;
+      mix-blend-mode: darken;
+      z-index: -1;
+  }
+  .bubble_natalia
+  {
+      position: absolute;
+      width: 43%;
+      top: 55%;
+      left: 27%;
+      mix-blend-mode: darken;
+      z-index: -1;
+  }
+  .bubble_michael
+  {
+      position: absolute;
+      width: 40%;
+      top: 7%;
+      right: 12%;
+      mix-blend-mode: darken;
+      z-index: -1;
+  }
+  .bubble_gil
+  {
+      position: absolute;
+      width: 37%;
+      top: 61%;
+      right: -3%;
+      mix-blend-mode: darken;
+      z-index: -1;
+  }
+  .linarys_logo_top
+  {
+      position: absolute;
+      width: 15%;
+      top: 50%;
+      left: 6%;
+      mix-blend-mode: normal;
+      z-index: -1;
+  }
+
+  @media  screen and (max-width: 1199px){
+    .shape-about-1-1{
+      width: 168%;
+      top: -83%;
+      left: -37%;
+    }
+    .shape-about-1-2{
+      width: 25%;
+      top: 69%;
+      left: 1%;
+    }
+  }
+
+  @media  screen and (max-width: 991px){
+    .shape-about-1-1 {
+      width: 188%;
+      top: -124%;
+      left: -46%;
+    }
+    .shape-about-1-2{
+      width: 28%;
+      left: -9%;
+    }
+    .shape-about-1-3{
+      width: 20%;
+      top: 37%;
+      right: -22%;
+    }
+    .shape-about-1-4{
+      width: 16%;
+      top: 160%;
+      right: -2%;
+    }
+    .bubble_franco{
+      width: 55%;
+      top: 7%;
+      left: -17%;
+    }
+    .bubble_loic{
+      width: 44%;
+      left: 7%;
+    }
+    .bubble_michael{
+      width: 55%;
+      top: 4%;
+      right: 0%;
+    }
+    .bubble_marythe{
+      width: 50%;
+      top: 61%;
+      left: -15%;
+    }
+    .bubble_natalia{
+      width: 50%;
+      top: 51%;
+      left: 25%;
+    }
+    .bubble_gil{
+      width: 40%;
+      top: 61%;
+      right: -6%;
+    }
+    .linarys_logo_top{
+      width: 18%;
+      top: 46%;
+      left: -4%;
+    }
+  }
+
+  @media  screen and (max-width: 767px){
+    .shape-about-1-1 {
+        width: 210%;
+        top: -60%;
+        left: -42%;
+    }
+    .shape-about-1-2{
+      width: 32%;
+      top: 61%;
+    }
+    .shape-about-1-4{
+      top: 135%;
+    }
+    .shape-about-1-3{
+      top: -5%;
+      right: -26%;
+    }
+    .bubble_franco{
+      width: 70%;
+      top: 5%;
+      left: -27%;
+    }
+    .bubble_loic{
+      width: 64%;
+      left: 18%;
+      top: 7%;
+    }
+    .bubble_michael{
+      width: 64%;
+      top: 39%;
+      right: 61%;
+    }
+    .bubble_marythe {
+        width: 68%;
+        top: 42%;
+        left: 38%;
+    }
+    .bubble_natalia {
+        width: 64%;
+        top: 68%;
+        left: -21%;
+    }
+    .bubble_gil {
+        width: 60%;
+        top: 75%;
+        right: -6%;
+    }
+    .linarys_logo_top {
+      width: 22%;
+      top: 38%;
+      left: -4%;
+    }
+  }
+
+  @media  screen and (max-width: 575px){
+    .shape-about-1-1 {
+      width: 230%;
+      top: -95%;
+      left: -53%;
+    }
+    .shape-about-1-2{
+      top: 132%;
+      left: 32%;
+    }
+    .shape-about-1-4{
+      display: none;
+    }
+    .linarys_logo_top {
+      top: 106%;
+      left: 37%;
+    }
+    .bubble_franco{
+      width: 80%;
+      top: 2%;
+      left: 0%;
+    }
+    .bubble_loic {
+      width: 70%;
+      top: 4%;
+      left: 16%;
+    }
+    .bubble_michael {
+      width: 78%;
+      top: 24%;
+      right: 21%;
+    }
+    .bubble_marythe {
+      width: 76%;
+      top: 44%;
+      left: 11%;
+    }
+    .bubble_natalia {
+      width: 80%;
+      top: 60%;
+      left: 3%;
+    }
+    .bubble_gil {
+      width: 64%;
+      top: 84%;
+      right: 18%;
+    }
+  }
+
+  @media  screen and (max-width: 480px){
+    .shape-about-1-1{
+      width: 250%;
+      top: -84%;
+      left: -63%;
+    }
+    .shape-about-1-2 {
+      left: 30%;
+    }
+    .linarys_logo_top{
+      width: 23%;
+      top: 109%;
+      left: 37%;
+    }
+  }
+
+  @media  screen and (max-width: 420px){
+    .shape-about-1-1{
+      width: 260%;
+      top: -64%;
+      left: -69%;
+    }
+    .shape-about-1-2{
+      width: 38%;
+      top: 120%;
+    }
+    .linarys_logo_top {
+      width: 24%;
+      top: 104%;
+      left: 37%;
+    }
+  }
+  @media  screen and (max-width: 375px){
+    .shape-about-1-1{
+      width: 300%;
+      top: -46%;
+      left: -84%;
+    }
+    .shape-about-1-2{
+      width: 42%;
+      left: 28%;
+      top: 125%;
+    }
+    .linarys_logo_top {
+      width: 28%;
+      top: 107%;
+      left: 36%;
+    }
+  }
+
+  @media  screen and (max-width: 360px){
+    .shape-about-1-1{
+      width: 330%;
+      top: -50%;
+      left: -95%;
+    }
+  }
+
+  .lava_about-1-1 {
+    animation: lava_about-1-1 18s ease-in-out infinite;
+  }
+
+  @keyframes lava_about-1-1 {
+  0%   { transform: scale(0.9) rotate(-2deg);}
+  38%  { transform: scale(1, 1)  ; }
+  40%  { transform: scale(1, 1) ; }
+  78%  { transform: scale(0.9) ; }
+  80%  { transform: scale(0.9); }
+  100% { transform: scale(0.9) rotate(-2deg);}
+  }
+
+
+  .lava_about-1-3 {
+    animation: lava_about-1-3 18s ease-in-out infinite;
+  }
+
+  @keyframes lava_about-1-3 {
+  0%   { transform: scale(0.9) translate3d(10%, -15%, 0);}
+  38%  { transform: scale(1, 1)  ; }
+  40%  { transform: scale(1, 1) ; }
+  78%  { transform: scale(0.9) ; }
+  80%  { transform: scale(0.9); }
+  100% { transform: scale(0.9) translate3d(10%, -15%, 0);}
+
+  0% {border-radius:  50% 15% 15% 50% / 50% 15% 15% 50%;}
+  28% {border-radius:  55% 15% 15% 55% / 55% 20% 20% 55%;}
+  35% {border-radius:  50% 20% 20% 50% / 50% 15% 20% 50%;}
+  58% {border-radius:  50% 25% 25% 50% / 50% 15% 15% 50%;}
+  70% {border-radius:  55% 15% 15% 55% / 55% 15% 15% 55%;}
+  100% {border-radius:  50% 10% 10% 50% / 50% 10% 10% 50%;}
+
+  }
+
+  .lava_about-1-4{
+    animation: lava_about-1-4 15s ease-in-out infinite;
+  }
+
+  @keyframes lava_about-1-4 {
+  0%   { transform: scale(0.9) translate3d(8%, -8%, 0);}
+  38%  { transform: scale(1, 1)  ; }
+  40%  { transform: scale(1, 1) ; }
+  78%  { transform: scale(0.9) ; }
+  80%  { transform: scale(0.9); }
+  100% { transform: scale(0.9) translate3d(8%, -8%, 0);}
+
+  0% {border-radius:  50% 15% 15% 50% / 50% 15% 15% 50%;}
+  28% {border-radius:  55% 15% 15% 55% / 55% 20% 20% 55%;}
+  35% {border-radius:  50% 20% 20% 50% / 50% 15% 20% 50%;}
+  58% {border-radius:  50% 25% 25% 50% / 50% 15% 15% 50%;}
+  70% {border-radius:  55% 15% 15% 55% / 55% 15% 15% 55%;}
+  100% {border-radius:  50% 10% 10% 50% / 50% 10% 10% 50%;}
+  }
+
+  .lava_bubble_1 {
+    animation: lava_bubble_1 20s ease-in-out infinite;
+  }
+
+  @keyframes lava_bubble_1 {
+  0%   { transform: scale(1) rotate(25deg) ;}
+  38%  { transform: scale(1.2, 1.1) ; }
+  40%  { transform: scale(1.2, 1.1) ; }
+  78%  { transform: scale(1) ; }
+  80%  { transform: scale(1) }
+  100% { transform: scale(1) rotate(25deg); }
+
+  }
+
+  .lava_bubble_2 {
+    animation: lava_bubble_2 20s ease-in-out infinite;
+  }
+
+  @keyframes lava_bubble_2 {
+  0%   { transform: scale(1) rotate(-25deg) ;}
+  38%  { transform: scale(0.9, 0.9) ; }
+  40%  { transform: scale(0.9, 0.9) ; }
+  78%  { transform: scale(1) ; }
+  80%  { transform: scale(1) }
+  100% { transform: scale(1) rotate(-25deg); }
+
+  }
+
+  .lava_bubble_3 {
+    animation: lava_bubble_3 20s ease-in-out infinite;
+  }
+
+  @keyframes lava_bubble_3 {
+  0%   { transform: scale(1) translate3d(8%, 8%, 0) rotate(-25deg) ;}
+  38%  { transform: scale(1.2, 1.1); }
+  40%  { transform: scale(1.2, 1.1); }
+  78%  { transform: scale(1) ; }
+  80%  { transform: scale(1) }
+  100% { transform: scale(1) translate3d(8%, 8%, 0) rotate(-25deg); }
+
+  }
+
+  .lava_bubble_6 {
+    animation: lava_bubble_6 20s ease-in-out infinite;
+  }
+
+  @keyframes lava_bubble_6 {
+  0%   { transform: scale(0.9) translate3d(8%, 8%, 0) rotate(-25deg) ;}
+  38%  { transform: scale(1, 1.1); }
+  40%  { transform: scale(1, 1.1); }
+  78%  { transform: scale(0.9) ; }
+  80%  { transform: scale(0.9) }
+  100% { transform: scale(0.9) translate3d(8%, 8%, 0) rotate(-25deg); }
+
+  }
+
+  .linarys_move {
+    animation: linarys_move 20s ease-in-out infinite;
+  }
+
+  @keyframes linarys_move {
+  0%   { transform: translate3d(0%, 8%, 0);}
+  20% {  transform: translate3d(0%, 4%, 0);}
+  40%   { transform: translate3d(0%, 8%, 0);}
+  60% {  transform: translate3d(0%, 4%, 0);}
+  80%   { transform: translate3d(0%, 8%, 0);}
+  100% {  transform: translate3d(0%, 4%, 0);}
+  }
