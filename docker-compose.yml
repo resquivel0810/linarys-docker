@@ -6,7 +6,7 @@ services:
     image: mysql:5.7
     volumes:
       - ./database:/var/lib/mysql
-      - ./mysqldumps/backup.sql:/docker-entrypoint-initdb.d/backup.sql  # USAR .sql NO .sql.gz
+      - ./mysqldumps/backup.sql:/docker-entrypoint-initdb.d/backup.sql.gz  # USAR .sql NO .sql.gz
       - ./init/restore.sh:/docker-entrypoint-initdb.d/restore.sh
     ports:
       - "3309:3306"
