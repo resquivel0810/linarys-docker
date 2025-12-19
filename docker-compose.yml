@@ -3,7 +3,6 @@ version: '3.8'
 services:
   wordpress:
     container_name: wordpress-nuevo  # Nombre diferente
-    platform: linux/amd64
     depends_on:
       db:
         condition: service_healthy
@@ -33,7 +32,6 @@ services:
   db:
     container_name: db-nuevo  # Nombre diferente
     image: mysql:5.7
-    platform: linux/amd64
     command: "--default-authentication-plugin=mysql_native_password"
     volumes:
       - ./database:/var/lib/mysql
