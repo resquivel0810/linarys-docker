@@ -1,65 +1,145 @@
 version: '3.8'
 
 services:
+  db:
+    container_name: db-nuevo
+    image: mysql:5.7
+    volumes:
+      - ./database:/var/lib/mysql
+      - ./mysqldumps/backup.sql:/docker-entrypoint-initdb.d/backup.sql  # USAR .sql NO .sql.gz
+      - ./init/restore.sh:/docker-entrypoint-initdb.d/restore.sh
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: unamuysegura
+      MYSQL_DATABASE: linarysdb
+      MYSQL_USER: linarysdbuser
+      MYSQL_PASSWORD: unamuysegura
+      MYSQL_ROOT_HOST: "%"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-punamuysegura"]
+      interval: 10s
+      retries: 30
+      start_period: 60s
+    command: >
+      bash -c "
+      echo '=== INICIANDO MYSQL ==='
+      chmod +x /docker-entrypoint-initdb.d/*.sh 2>/dev/null || true
+      echo 'Scripts con permisos:'
+      ls -la /docker-entrypoint-initdb.d/ 2>/dev/null || echo 'No hay scripts'
+      exec docker-entrypoint.sh mysqld --default-authentication-plugin=mysql_native_password
+      "
+    restart: unless-stopped
+
   wordpress:
     container_name: wordpress-nuevo
-    platform: linux/amd64
+    image: wordpress:latest
     depends_on:
       db:
         condition: service_healthy
-    image: wordpress:latest
     volumes:
       - ./site/wp-content:/var/www/html/wp-content
-      - ./init/prep.sh:/prep.sh
+      - ./init/fix-urls.sh:/fix-urls.sh
+      - ./wp-config.php:/var/www/html/wp-config.php  # IMPORTANTE: Montar wp-config directamente
     ports:
       - "8888:80"
-    restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: linarysdbuser
       WORDPRESS_DB_PASSWORD: unamuysegura
       WORDPRESS_DB_NAME: linarysdb
       WORDPRESS_TABLE_PREFIX: dGY66rR_
-      WORDPRESS_DEBUG: "1"
-    # CAMBIO AQUÍ: entrypoint personalizado que da permisos
-    entrypoint: ["/bin/sh", "-c"]
+      # Forzar a NO instalar
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_INSTALLING', false);
+        define('WP_AUTO_UPDATE_CORE', false);
     command: >
-      "
-      chmod +x /prep.sh 2>/dev/null || true
-      /prep.sh &
+      bash -c "
+      echo '=== INICIANDO WORDPRESS ==='
+      echo 'Esperando a que la BD esté completamente lista...'
+      sleep 10
+      
+      # Verificar que wp-config.php existe
+      if [ -f /var/www/html/wp-config.php ]; then
+        echo '✓ wp-config.php encontrado'
+        echo 'Contenido de wp-config.php (primeras líneas):'
+        head -20 /var/www/html/wp-config.php
+      else
+        echo '✗ ERROR: wp-config.php NO encontrado'
+        echo 'Creando wp-config.php manualmente...'
+        cat > /var/www/html/wp-config.php << 'WPCONFIG'
+      <?php
+      // ** Configuración de MySQL ** //
+      define('DB_NAME', 'linarysdb');
+      define('DB_USER', 'linarysdbuser');
+      define('DB_PASSWORD', 'unamuysegura');
+      define('DB_HOST', 'db');
+      define('DB_CHARSET', 'utf8');
+      define('DB_COLLATE', '');
+
+      // ** Prefijo de tablas ** //
+      \$table_prefix = 'dGY66rR_';
+
+      // ** Claves únicas de autenticación ** //
+      // Genera tus propias en: https://api.wordpress.org/secret-key/1.1/salt/
+      define('AUTH_KEY',         'B-!}bCBW. R15N}2@@>398j64IR+/Qa(~8 )]|RFXC!mZ^]u`Y7`t}-t|-V3>]2I');
+      define('SECURE_AUTH_KEY',  '+}@aKg~n,lUc+_1--410.do:t)^6JyYu7dyn6fgx}&(W|9m26Q0TXE?eO*[LCZ3+');
+      define('LOGGED_IN_KEY',    'Q=fMJ|si+#e^BS(;YY=V[P[]Kc.gE[M2,lVhPGrD0WiU@x_L}8]ii!-XGQ<g&RP_');
+      define('NONCE_KEY',        '.aQ$ft6U]]++:_yhzk-Lpd*BhWN!)F:x6Cyd)%{`~5Rik$g=)aU$H-YAUqRct33p');
+      define('AUTH_SALT',        '|N]@0s]sVJlz1,~*=t(:bq-0^~dpP#[]VWtJy6M8!SD-aa1=xjY+wfl5y+;%!$l}');
+      define('SECURE_AUTH_SALT', 'yy1aV*vypk66A E)]:V0~Y`H)lsxa]2meGW->6(;AK4eD;uP@e0NJ14` c<tKt;b');
+      define('LOGGED_IN_SALT',   'dt`9:b0s#R75+&h(0a0L^`u$[}m->RD:#sh=F|bg:Yo mG%3][+Er5y36h_=@!Ja');
+      define('NONCE_SALT',       '&#o-7lE+^;Qt|E1elfr$EPv$ep.GycZ@}h/C/$oa#Di*=tu/+@m(A2~kq5zuSV9e');
+
+      // ** URLs del sitio ** //
+      define('WP_HOME', 'http://localhost:8888');
+      define('WP_SITEURL', 'http://localhost:8888');
+
+      // ** Debug ** //
+      define('WP_DEBUG', true);
+      define('WP_DEBUG_LOG', true);
+      define('WP_DEBUG_DISPLAY', false);
+
+      // ** Evitar instalación automática ** //
+      define('WP_INSTALLING', false);
+
+      \$dGY66rR_dbh = null;
+
+      if (!defined('ABSPATH'))
+        define('ABSPATH', dirname(__FILE__) . '/');
+
+      require_once(ABSPATH . 'wp-settings.php');
+      WPCONFIG
+        echo 'wp-config.php creado manualmente'
+      fi
+      
+      # Verificar conexión a BD
+      echo 'Verificando conexión a la BD...'
+      if mysql -h db -u linarysdbuser -punamuysegura linarysdb -e 'SELECT 1;' 2>/dev/null; then
+        echo '✓ Conexión a BD exitosa'
+        
+        # Ejecutar fix-urls.sh
+        chmod +x /fix-urls.sh 2>/dev/null || true
+        if [ -x /fix-urls.sh ]; then
+          echo 'Ejecutando fix-urls.sh...'
+          /fix-urls.sh
+        fi
+      else
+        echo '✗ ERROR: No se puede conectar a la BD'
+        echo 'Esperando 30 segundos más...'
+        sleep 30
+      fi
+      
+      echo 'Iniciando Apache...'
       exec docker-entrypoint.sh apache2-foreground
       "
-
-  db:
-    container_name: db-nuevo
-    image: mysql:5.7
-    platform: linux/amd64
-    volumes:
-      - ./database:/var/lib/mysql
-      - ./mysqldumps/backup.sql.gz:/docker-entrypoint-initdb.d/backup.sql.gz
-      - ./init/migrate.sh:/docker-entrypoint-initdb.d/migrate.sh
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: unamuysegura
-      MYSQL_DATABASE: linarysdb
-      MYSQL_USER: linarysdbuser
-      MYSQL_PASSWORD: unamuysegura
-    ports:
-      - "3309:3306"
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-punamuysegura"]
-      interval: 10s
-      timeout: 5s
-      retries: 20
-    # CAMBIO AQUÍ: entrypoint que da permisos a los scripts
-    entrypoint: ["/bin/sh", "-c", "chmod +x /docker-entrypoint-initdb.d/*.sh 2>/dev/null || true && exec docker-entrypoint.sh mysqld"]
-    command: "--default-authentication-plugin=mysql_native_password"
+    restart: unless-stopped
 
   adminer:
     container_name: adminer-nuevo
     image: adminer
-    restart: always
+    depends_on:
+      - db
     ports:
       - "8889:8080"
-    environment:
-      ADMINER_DEFAULT_SERVER: db-nuevo
+    restart: unless-stopped
